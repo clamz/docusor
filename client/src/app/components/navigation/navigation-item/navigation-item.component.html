@@ -1,0 +1,26 @@
+
+<li class="dv-navigation-item">
+  <a
+    class="dv-navigation-item__link"
+    [ngClass]="{ 'dv-navigation-item__link--active': isActive }"
+    [routerLink]="['doc']" [queryParams]="{ path: item.path }"
+    *ngIf="!isFolder"
+
+  >
+    {{ item.name }}
+  </a>
+  <span
+    *ngIf="isFolder"
+    (click)="toggleFolder(item)"
+    [ngClass]="{'dv-navigation-item__folder': true, 'dv-navigation-item__folder--open': item.isOpen }"
+  >
+    <span class="dv-navigation-item__folder-name">{{ item.name }}</span>
+    <i class="dv-navigation-item__folder-toggler"
+      [ngClass]="{ 'dv-navigation-item__folder-toggler--open': item.isOpen }" *ngIf="!item.isOpen">>
+    </i>
+    <i class="dv-navigation-item__folder-toggler"
+      [ngClass]="{ 'dv-navigation-item__folder-toggler--open': item.isOpen }" *ngIf="item.isOpen">v
+    </i>
+  </span>
+  <navigation-list [items]="item.children" *ngIf="isFolder && item.isOpen"></navigation-list>
+</li>
