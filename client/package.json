@@ -55,6 +55,7 @@
     "protractor": "protractor",
     "protractor:delay": "sleep 3 && npm run protractor",
     "protractor:live": "protractor --elementExplorer",
+    "publishheroku": "cd ../ && git subtree push --prefix client heroku-client master || true",
     "rimraf": "rimraf",
     "server:dev:hmr": "npm run server:dev -- --hot --hotOnly",
     "server:aot:dev": "cross-env BUILD_AOT=1 npm run server:dev",
@@ -64,7 +65,8 @@
     "server": "npm run server:dev",
     "start:prod:hmr": "cross-env ANGULAR_CONF_FILE=./config.prod.json npm run server:dev:hmr",
     "start:hmr": "npm run server:dev:hmr",
-    "start": "npm run server:dev",
+    "start:dev": "npm run server:dev",
+    "start": "npm run server:prod",
     "start:aot": "npm run server:aot:dev",
     "test": "karma start",
     "test:sonar": "npm run lint && cross-env SONAR_QUBE=1 karma start",
@@ -181,7 +183,7 @@
     "url": "https://github.com/gdi2290/angular-starter/issues"
   },
   "engines": {
-    "node": ">= 8.0.0",
-    "npm": ">= 5"
+    "node": "8.9.1",
+    "npm": "5.6.0"
   }
 }

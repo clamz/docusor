@@ -4,7 +4,9 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "serve": "nodemon app.js"
+    "publishheroku": "cd ../ && git subtree push --prefix server heroku-server master || true",
+    "serve": "nodemon app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^4.16.3",
