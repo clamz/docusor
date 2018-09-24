@@ -21,10 +21,7 @@ declare var Prism: any;
 
 @Injectable()
 export class HighlightService {
-
-  constructor() { }
-
-  highlightAll() {
+  public highlightAll() {
     Prism.highlightAll();
   }
 }
