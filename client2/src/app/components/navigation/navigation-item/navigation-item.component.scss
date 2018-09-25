@@ -1,0 +1,87 @@
+@import 'src/styles/variables';
+@import '~material-design-icons/iconfont/material-icons.css';
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+.dv-navigation-item {
+  user-select: none;
+  position: relative;
+  padding-left: 1.2em;
+  &__link, &__folder {
+    color: $color1;
+    font-size: 1.2em;
+    display: block;
+    padding: 0.5em 0 0.5em;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color2;
+    &:before {
+      @extend .material-icons;
+      content: 'description';
+      vertical-align: top;
+      font-size: 18px;
+      margin-right: 0.4em;
+    }
+    &--active {
+      color: $color5;
+    }
+  }
+
+  &__folder-toggler {
+    position: absolute;
+    right: 0;
+    top: 7px;
+  }
+
+  &__folder {
+    cursor: pointer;
+    &:before {
+      @extend .material-icons;
+      content: 'folder';
+      vertical-align: top;
+      font-size: 18px;
+      margin-right: 0.4em;
+    }
+
+    &--open {
+      &:before {
+        content:'folder_open';
+      }
+    }
+    // &:before {
+    //   content: '+';
+    //   width: 10px;
+    //   display: inline-block;
+    // }
+    // &--open {
+    //   &:before {
+    //     content: '-';
+    //   }
+    // }
+  }
+}

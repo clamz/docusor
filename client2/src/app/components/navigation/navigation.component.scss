@@ -1,0 +1,32 @@
+@import 'src/styles/variables';
+
+
+.dv-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: $navigation-bar-width;
+  background: $color4;
+  color: $color1;
+  border-right: darken($color4, 5%) 1px solid;
+  &__title {
+    color: $color4;
+    border-bottom: 1px solid $color3;
+    background: $color5;
+    padding: 10px;
+    margin-bottom: 0.8em;
+  }
+
+  &__list {
+    padding-right: 0.7em;
+    display: block;
+  }
+  // &__list-item-link {
+
+  //   padding: 10px;
+  //   color: $color4;
+  //   text-decoration: none;
+  // }
+}
