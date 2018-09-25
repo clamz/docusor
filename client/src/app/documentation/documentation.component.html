@@ -1,1 +1,14 @@
-<div class="markdown-body" [innerHTML]="docContent" #tref></div>
+<div class="documentation">
+  <a href="" class="documentation__edit" (click)="onEdit($event)">Edit</a>
+  <div class="documentation__html markdown-body" [innerHTML]="docContent" #tref *ngIf="!editMode">
+
+  </div>
+
+  <div class="documentation__mardown markdown-body" #tref *ngIf="editMode">
+    <textarea
+      rows="12"
+      name="markdownText" [(ngModel)]="markdownContent"
+    >
+    </textarea>
+  </div>
+</div>

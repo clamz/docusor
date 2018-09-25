@@ -19,11 +19,13 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { DevModuleModule } from './+dev-module';
-import { DocumentationComponent } from './documentation/documentation.component'
+import { DocumentationComponent } from './documentation/documentation.component';
 
-
+// TOdo add to navigation module
 import { NavigationComponent } from './components/navigation/navigation.component';
+// tslint:disable-next-line:max-line-length
 import { NavigationItemComponent } from './components/navigation/navigation-item/navigation-item.component';
+// tslint:disable-next-line:max-line-length
 import { NavigationListComponent } from './components/navigation/navigation-list/navigation-list.component';
 
 import '../styles/styles.scss';

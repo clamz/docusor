@@ -33,6 +33,16 @@ server.get('/navigation', function(req, res, next) {
 	next();
 });
 
+server.get('/doc/*/markdown', function(req, res, next) {
+	const filePath = req.params[0]
+	const rootPath = config.path
+	var contents = fs.readFileSync(`${rootPath}/${filePath}`, 'utf8');
+	res.set('Content-Type', 'plain/text');
+	res.send(contents);
+	next();
+});
+
+
 server.get('/doc/*', function(req, res, next) {
 	const filePath = req.params[0]
 	const rootPath = config.path
@@ -42,6 +52,7 @@ server.get('/doc/*', function(req, res, next) {
 	res.send(html);
 	next();
 });
+
 
 server.listen(3010, function () {
 	console.log('%s listening at %s', server.name, server.url);

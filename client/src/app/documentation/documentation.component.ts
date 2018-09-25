@@ -11,6 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { HighlightService } from '../services/highlight.service';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-markdown/css/bootstrap-markdown.min.css';
+import 'font-awesome/css/font-awesome.css';
+import 'jquery/dist/jquery.js';
+import 'bootstrap-markdown/js/bootstrap-markdown.js';
 
 /**
  * We're loading this component asynchronously
@@ -20,7 +25,7 @@ import { HighlightService } from '../services/highlight.service';
 
 @Component({
   selector: 'documentation',
-  templateUrl: './documentation.component.html',
+  templateUrl: './documentation.component.html'
 })
 @Injectable()
 export class DocumentationComponent implements OnInit, OnDestroy, AfterViewChecked {
@@ -28,6 +33,9 @@ export class DocumentationComponent implements OnInit, OnDestroy, AfterViewCheck
   public routeSub: any;
   public docContent: any;
   public highlightService: HighlightService;
+  public editMode: boolean = false;
+  public docPath: string;
+  public markdownContent: string;
 
   @ViewChild('tref', {read: ElementRef}) public tref: ElementRef;
   constructor(private route: ActivatedRoute, private http: HttpClient) {
@@ -38,6 +46,7 @@ export class DocumentationComponent implements OnInit, OnDestroy, AfterViewCheck
     this.routeSub = this.route.queryParams.subscribe( (params) => {
       this.highlighted = false;
       this.docContent = null;
+      this.docPath = params.path;
       this.http.get(`/api/doc/${params.path}`, {responseType: 'text'}).subscribe((data) => {
 
         this.docContent = data;
@@ -57,6 +66,17 @@ export class DocumentationComponent implements OnInit, OnDestroy, AfterViewCheck
       this.highlightService.highlightAll();
       this.highlighted = true;
     }
+  }
+
+  public onEdit($event) {
+    $event.preventDefault();
+    this.editMode = !this.editMode;
+    this.http.get(`/api/doc/${this.docPath}/markdown`, {responseType: 'text'}).subscribe((data) => {
+
+      this.markdownContent = data;
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   public ngOnDestroy(): void {
